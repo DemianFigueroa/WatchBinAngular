@@ -1,0 +1,39 @@
+<div class="media-container">
+  <div class="media-header">
+    <h2 class="watchbin-title">WatchBin</h2>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!mediaList.length && !errorMessage" class="no-media-message">
+    <p>No media items available.</p>
+  </div>
+
+  <div class="media-grid">
+    <div *ngFor="let media of mediaList" class="media-item">
+      <a [routerLink]="['/media', media.id]" class="media-link">
+        <img
+          [src]="media.coverImageUrl"
+          alt="{{ media.name }} cover image"
+          class="cover-image"
+          (error)="onImageError($event)"
+        />
+        <div class="media-name">
+          <p>{{ media.name }}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <button [routerLink]="['/add-media']" class="add-media-button">
+      Add New Media
+    </button>
+    <button (click)="deleteAccount()" class="add-media-button">
+      Delete Account
+    </button>
+    <button (click)="logout()" class="add-media-button">Logout</button>
+  </div>
+</div>

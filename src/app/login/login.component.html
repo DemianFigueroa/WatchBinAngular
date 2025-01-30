@@ -1,25 +1,41 @@
 <div class="login-container">
   <h2>Login</h2>
 
-  <form (ngSubmit)="onLogin()">
-    <div>
+  <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+    <div class="form-group">
       <label for="username">Username:</label>
-      <input type="text" id="username" [(ngModel)]="username" name="username" required />
+      <input
+        type="text"
+        id="username"
+        [(ngModel)]="username"
+        name="username"
+        required
+      />
     </div>
 
-    <div>
+    <div class="form-group">
       <label for="password">Password:</label>
-      <input type="password" id="password" [(ngModel)]="password" name="password" required />
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="password"
+        name="password"
+        required
+      />
     </div>
 
     <div *ngIf="errorMessage" class="error-message">
       {{ errorMessage }}
     </div>
 
-    <button type="submit">Login</button>
+    <button type="submit" [disabled]="!loginForm.valid">Login</button>
   </form>
 
-  <div *ngIf="isLoggedIn">
-    <p>Login successful!</p>
+  <div class="navigation-buttons">
+    <button (click)="goToRegister()">Go to Register</button>
+  </div>
+
+  <div *ngIf="isLoggedIn" class="success-message">
+    <p>Login successful! Redirecting...</p>
   </div>
 </div>

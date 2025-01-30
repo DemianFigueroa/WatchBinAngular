@@ -1,0 +1,123 @@
+<div class="media-detail-container">
+  <h2>Edit Media</h2>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+
+  <form (ngSubmit)="onSubmit()" #mediaForm="ngForm" class="media-detail">
+    <!-- Image Section -->
+    <div class="media-image">
+      <img
+        [src]="media.coverImage"
+        alt="{{ media.name }} cover image"
+        class="cover-image"
+      />
+    </div>
+
+    <!-- Form Fields Section -->
+    <div class="media-info">
+      <!-- Name -->
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          [(ngModel)]="media.name"
+          name="name"
+          required
+        />
+      </div>
+
+      <!-- Type -->
+      <div class="form-group">
+        <label for="type">Type:</label>
+        <input
+          type="text"
+          id="type"
+          [(ngModel)]="media.type"
+          name="type"
+          required
+        />
+      </div>
+
+      <!-- Category -->
+      <div class="form-group">
+        <label for="category">Category:</label>
+        <input
+          type="text"
+          id="category"
+          [(ngModel)]="media.category"
+          name="category"
+          required
+        />
+      </div>
+
+      <!-- Creator -->
+      <div class="form-group">
+        <label for="creator">Creator:</label>
+        <input
+          type="text"
+          id="creator"
+          [(ngModel)]="media.creator"
+          name="creator"
+          required
+        />
+      </div>
+
+      <!-- Release Date -->
+      <div class="form-group">
+        <label for="releaseDate">Release Date:</label>
+        <input
+          type="date"
+          id="releaseDate"
+          [(ngModel)]="media.releaseDate"
+          name="releaseDate"
+          required
+        />
+      </div>
+
+      <!-- Status -->
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <input
+          type="checkbox"
+          id="status"
+          [(ngModel)]="media.status"
+          name="status"
+        />
+      </div>
+
+      <!-- Description -->
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea
+          id="description"
+          [(ngModel)]="media.description"
+          name="description"
+        ></textarea>
+      </div>
+
+      <!-- Cover Image URL -->
+      <div class="form-group">
+        <label for="coverImageUrl">Cover Image URL:</label>
+        <input
+          type="text"
+          id="coverImageUrl"
+          [(ngModel)]="media.coverImage"
+          name="coverImageUrl"
+        />
+      </div>
+
+      <!-- Buttons -->
+      <div class="button-container">
+        <button type="submit" [disabled]="!mediaForm.valid" class="action-button save-button">Save Changes</button>
+        <a [routerLink]="['/media-list']" class="action-button back-link">Cancel</a>
+      </div>
+    </div>
+  </form>
+</div>

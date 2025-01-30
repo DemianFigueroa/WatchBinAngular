@@ -1,0 +1,145 @@
+.media-detail-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; // Center vertically
+  align-items: center; // Center horizontally
+  min-height: 92vh; // Ensure the container takes the full height of the viewport
+  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.error-message {
+  color: #dc3545;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.media-detail {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.media-image {
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+  text-align: center;
+}
+
+.cover-image {
+  width: 400px;
+  height: 600px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  object-fit: cover; // Ensure the image covers the area without distortion
+}
+
+.media-info {
+  flex: 2;
+  min-width: 300px;
+  max-width: 600px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.media-info p {
+  font-size: 1.5rem;
+  margin: 15px 0;
+  color: #555;
+}
+
+.media-info strong {
+  color: #333;
+  font-weight: 600;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px; // Add margin to separate buttons from the media info
+}
+
+.action-button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.back-link {
+  background-color: #6200ee;
+  color: white;
+
+  &:hover {
+    background-color: #3700b3;
+  }
+}
+
+.edit-link {
+  background-color: #ffc107;
+  color: #333;
+
+  &:hover {
+    background-color: #e0a800;
+  }
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+
+  &:hover {
+    background-color: #c82333;
+  }
+}
+
+@media (max-width: 768px) {
+  .media-detail {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .media-image {
+    max-width: 100%;
+  }
+
+  .media-info {
+    max-width: 100%;
+  }
+
+  .button-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .action-button {
+    width: 100%;
+  }
+}

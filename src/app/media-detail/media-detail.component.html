@@ -1,0 +1,33 @@
+<div class="media-detail-container">
+  <h2>{{ media?.name }}</h2>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="media" class="media-detail">
+    <div class="media-image">
+      <img
+        [src]="media.coverImageUrl"
+        alt="{{ media.name }} cover image"
+        class="cover-image"
+        (error)="onImageError($event)"
+      />
+    </div>
+
+    <div class="media-info">
+      <p><strong>Type:</strong> {{ media.type }}</p>
+      <p><strong>Category:</strong> {{ media.category }}</p>
+      <p><strong>Creator:</strong> {{ media.creator }}</p>
+      <p><strong>Release Date:</strong> {{ formatReleaseDate(media.releaseDate) }}</p>
+      <p><strong>Status:</strong> {{ media.status ? 'Completed' : 'Pending' }}</p>
+      <p><strong>Description:</strong> {{ media.description || 'No description available.' }}</p>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <a [routerLink]="['/media-list']" class="action-button back-link">Back to Media List</a>
+    <a [routerLink]="['/add-media']" [queryParams]="{ id: media.id }" class="action-button back-link">Edit Media</a>
+    <button (click)="confirmDelete()" class="action-button back-link">Delete Media</button>
+  </div>
+</div>
