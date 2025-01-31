@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:5100/api';
+  private apiUrl = 'https://watchbin.onrender.com/api';
 
   constructor(private http: HttpClient) {}
 
