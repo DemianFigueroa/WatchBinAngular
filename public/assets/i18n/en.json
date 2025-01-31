@@ -1,0 +1,85 @@
+{
+  "dropdownMenu": {
+    "logout": "Logout",
+    "deleteAccount": "Delete Account",
+    "addNewMedia": "Add New Media"
+  },
+  "mediaInfo": {
+    "type": "Type",
+    "Movie": "Movie",
+    "Show": "Show",
+    "Game": "Game",
+    "Book": "Book",
+    "category": "Category",
+    "creator": "Creator",
+    "releaseDate": "Release Date",
+    "status": "Status",
+    "completed": "Completed",
+    "pending": "Pending",
+    "description": "Description",
+    "noDescription": "No description available."
+  },
+  "buttons": {
+    "backToMediaList": "Back to Media List",
+    "editMedia": "Edit Media",
+    "deleteMedia": "Delete Media",
+    "saveChanges": "Save Changes",
+    "cancel": "Cancel"
+  },
+  "mediaDetail": {
+    "editMedia": "Edit Media",
+    "noImageFound": "No image found",
+    "name": "Name",
+    "type": "Type",
+    "category": "Category",
+    "creator": "Creator",
+    "releaseDate": "Release Date",
+    "status": "Status",
+    "description": "Description",
+    "coverImageUrl": "Cover Image URL",
+    "movie": "Movie",
+    "show": "Show",
+    "game": "Game",
+    "book": "Book"
+  },
+  "date": {
+    "months": [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ]
+  },
+  "searchFilter": {
+    "searchPlaceholder": "Search media...",
+    "all": "All",
+    "show": "Show",
+    "movie": "Movie",
+    "game": "Game",
+    "book": "Book",
+    "completed": "Completed",
+    "uncompleted": "Uncompleted"
+  },
+  "info": {
+    "title": "About the Project",
+    "description": "This full-stack project features a secure .NET API for user authentication (registration/login) using JWT tokens, paired with an Angular frontend built with standalone components. The platform enables users to create and manage customizable media lists (games, movies, shows, books) with multilingual support and dynamic filtering. Designed for scalability, it offers a seamless experience for organizing and tracking media consumption across diverse formats.",
+    "goToRegister": "Go to the project",
+    "frontendRepo": "Frontend in Github",
+    "backendRepo": "Backend in Github",
+    "downloadCV": "Download CV"
+  },
+  "login": {
+    "title": "Login",
+    "username": "Username",
+    "password": "Password",
+    "loginButton": "Login",
+    "goToRegister": "Go to Register",
+    "successMessage": "Login successful! Redirecting..."
+  },
+  "register": {
+    "title": "Register",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "registerButton": "Register",
+    "goToLogin": "Go to Login"
+  }
+}

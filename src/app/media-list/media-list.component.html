@@ -1,8 +1,4 @@
 <div class="media-container">
-  <div class="media-header">
-    <h2 class="watchbin-title">WatchBin</h2>
-  </div>
-
   <div *ngIf="errorMessage" class="error-message">
     {{ errorMessage }}
   </div>
@@ -11,8 +7,31 @@
     <p>No media items available.</p>
   </div>
 
+  <div class="search-filter-container">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="onSearchChange()"
+      [placeholder]="'searchFilter.searchPlaceholder' | translate"
+      class="search-bar"
+    />
+    <select
+      [(ngModel)]="filterCriteria"
+      (change)="onFilterChange()"
+      class="filter-dropdown"
+    >
+      <option value="all">{{ 'searchFilter.all' | translate }}</option>
+      <option value="Show">{{ 'searchFilter.show' | translate }}</option>
+      <option value="Movie">{{ 'searchFilter.movie' | translate }}</option>
+      <option value="Game">{{ 'searchFilter.game' | translate }}</option>
+      <option value="Book">{{ 'searchFilter.book' | translate }}</option>
+      <option value="Completed">{{ 'searchFilter.completed' | translate }}</option>
+      <option value="Uncompleted">{{ 'searchFilter.uncompleted' | translate }}</option>
+    </select>
+  </div>
+
   <div class="media-grid">
-    <div *ngFor="let media of mediaList" class="media-item">
+    <div *ngFor="let media of filteredMediaList" class="media-item">
       <a [routerLink]="['/media', media.id]" class="media-link">
         <img
           [src]="media.coverImageUrl"
@@ -25,15 +44,5 @@
         </div>
       </a>
     </div>
-  </div>
-
-  <div class="button-container">
-    <button [routerLink]="['/add-media']" class="add-media-button">
-      Add New Media
-    </button>
-    <button (click)="deleteAccount()" class="add-media-button">
-      Delete Account
-    </button>
-    <button (click)="logout()" class="add-media-button">Logout</button>
   </div>
 </div>

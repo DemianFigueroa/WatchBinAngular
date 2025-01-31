@@ -3,22 +3,23 @@ import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { AuthInterceptor } from '../auth.interceptor';
+import { authInterceptor } from '../auth.interceptor';
 import { ApiService } from '../api.service';
 import { v4 as uuidv4 } from 'uuid';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-media',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule],
+  imports: [FormsModule, CommonModule, RouterModule, TranslateModule],
   templateUrl: './add-media.component.html',
   styleUrl: './add-media.component.scss',
   providers: [
     HttpClient,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
+      useExisting: authInterceptor,
+      multi: true, // Add the interceptor to the chain
     },
     DatePipe, // Add DatePipe to the providers array
   ],

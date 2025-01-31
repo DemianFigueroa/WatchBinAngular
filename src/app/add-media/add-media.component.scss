@@ -1,3 +1,6 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap');
+
 .media-detail-container {
   display: flex;
   flex-direction: column;
@@ -7,7 +10,9 @@
   margin: 0 auto;
   background-color: #f9f9f9;
   border-radius: 8px;
+  padding-top: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Open Sans', sans-serif; // Use Open Sans for body text
 }
 
 h2 {
@@ -15,6 +20,8 @@ h2 {
   font-size: 2.5rem;
   margin-bottom: 20px;
   color: #333;
+  font-family: 'Poppins', sans-serif; // Use Poppins for headings
+  font-weight: 600; // Make the heading bold
 }
 
 .error-message {
@@ -22,6 +29,7 @@ h2 {
   text-align: center;
   font-size: 1.2rem;
   margin-bottom: 20px;
+  font-family: 'Open Sans', sans-serif; // Use Open Sans for error messages
 }
 
 .success-message {
@@ -29,6 +37,7 @@ h2 {
   text-align: center;
   font-size: 1.2rem;
   margin-bottom: 20px;
+  font-family: 'Open Sans', sans-serif; // Use Open Sans for success messages
 }
 
 .media-detail {
@@ -63,6 +72,7 @@ h2 {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Open Sans', sans-serif; // Use Open Sans for media info
 }
 
 .form-group {
@@ -74,6 +84,7 @@ h2 {
   font-size: 1.2rem;
   color: #333;
   margin-bottom: 5px;
+  font-family: 'Poppins', sans-serif; // Use Poppins for labels
 }
 
 .form-group input[type="text"],
@@ -85,6 +96,7 @@ h2 {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif; // Use Open Sans for inputs
 }
 
 .form-group textarea {
@@ -96,6 +108,29 @@ h2 {
   width: 20px;
   height: 20px;
   margin-left: 10px;
+}
+
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: white;
+  appearance: none; /* Remove default dropdown arrow */
+  -webkit-appearance: none; /* Remove default dropdown arrow for Safari */
+  -moz-appearance: none; /* Remove default dropdown arrow for Firefox */
+  font-family: 'Open Sans', sans-serif; // Use Open Sans for dropdowns
+}
+
+.form-group select:focus {
+  outline: none;
+  border-color: #6200ee; /* Customize focus border color */
+}
+
+.form-group select option {
+  padding: 10px;
 }
 
 .button-container {
@@ -115,6 +150,8 @@ h2 {
   text-decoration: none;
   transition: background-color 0.3s ease, transform 0.2s ease;
   cursor: pointer;
+  font-family: 'Poppins', sans-serif; // Use Poppins for buttons
+  border: none; // Ensure buttons have no border
 
   &:hover {
     transform: translateY(-2px);
@@ -124,10 +161,16 @@ h2 {
 .save-button {
   background-color: #28a745;
   color: white;
-  border: none;
 
   &:hover {
     background-color: #218838;
+  }
+
+  &:disabled {
+    background-color: #cccccc; // Gray background for disabled state
+    color: #666666; // Darker gray text for better contrast
+    cursor: not-allowed; // Change cursor to indicate the button is disabled
+    transform: none; // Disable the hover transform effect
   }
 }
 
@@ -140,26 +183,68 @@ h2 {
   }
 }
 
+// Media query for phone view (max-width: 768px)
 @media (max-width: 768px) {
+  .media-detail-container {
+    padding-top: 30px; // Reduce padding for smaller screens
+  }
+
+  h2 {
+    font-size: 2rem; // Reduce the font size for the heading
+    margin-bottom: 15px; // Reduce the margin for the heading
+  }
+
   .media-detail {
     flex-direction: column;
     align-items: center;
+    gap: 15px; // Reduce the gap between elements
+    margin-left: 0; // Remove the left margin
   }
 
   .media-image {
-    max-width: 100%;
+    max-width: 100%; // Make the image take up the full width
+  }
+
+  .cover-image {
+    width: 100%; // Make the image take up the full width
+    height: auto; // Adjust height automatically
+    max-height: 400px; // Limit the maximum height
   }
 
   .media-info {
-    max-width: 100%;
+    max-width: 100%; // Make the info section take up the full width
+    padding: 15px; // Reduce padding for smaller screens
+  }
+
+  .form-group label {
+    font-size: 1rem; // Reduce the font size for labels
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="date"],
+  .form-group textarea {
+    font-size: 0.9rem; // Reduce the font size for inputs
+    padding: 8px; // Reduce padding for inputs
+  }
+
+  .form-group textarea {
+    height: 80px; // Reduce the height of textareas
   }
 
   .button-container {
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: column; // Stack buttons vertically
+    gap: 10px; // Reduce the gap between buttons
+    margin-top: 15px; // Reduce the margin for the button container
   }
 
   .action-button {
-    width: 100%;
+    font-size: 0.9rem; // Reduce the font size for buttons
+    padding: 10px; // Reduce padding for buttons
+  }
+
+  .error-message,
+  .success-message {
+    font-size: 1rem; // Reduce the font size for messages
+    padding: 8px; // Adjust padding for messages
   }
 }

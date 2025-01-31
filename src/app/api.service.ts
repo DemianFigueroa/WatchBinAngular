@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable({
   providedIn: 'root',
@@ -17,8 +18,6 @@ export class ApiService {
       withCredentials: true,
     });
   }
-
-  // Method to handle registration
   register(username: string, email: string, password: string): Observable<any> {
     const registerDto = { username, email, password };
     return this.http.post(`${this.apiUrl}/account/register`, registerDto, {

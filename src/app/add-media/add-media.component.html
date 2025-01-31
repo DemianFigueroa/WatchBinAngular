@@ -1,5 +1,5 @@
 <div class="media-detail-container">
-  <h2>Edit Media</h2>
+  <h2>{{ "mediaDetail.editMedia" | translate }}</h2>
 
   <div *ngIf="errorMessage" class="error-message">
     {{ errorMessage }}
@@ -10,20 +10,16 @@
   </div>
 
   <form (ngSubmit)="onSubmit()" #mediaForm="ngForm" class="media-detail">
-    <!-- Image Section -->
     <div class="media-image">
       <img
         [src]="media.coverImage"
-        alt="No image found"
+        alt="{{ 'mediaDetail.noImageFound' | translate }}"
         class="cover-image"
       />
     </div>
-
-    <!-- Form Fields Section -->
     <div class="media-info">
-      <!-- Name -->
       <div class="form-group">
-        <label for="name">Name:</label>
+        <label for="name">{{ "mediaDetail.name" | translate }}:</label>
         <input
           type="text"
           id="name"
@@ -33,21 +29,18 @@
         />
       </div>
 
-      <!-- Type -->
       <div class="form-group">
-        <label for="type">Type:</label>
-        <input
-          type="text"
-          id="type"
-          [(ngModel)]="media.type"
-          name="type"
-          required
-        />
+        <label for="type">{{ "mediaDetail.type" | translate }}:</label>
+        <select id="type" [(ngModel)]="media.type" name="type" required>
+          <option value="Movie">{{ "mediaDetail.movie" | translate }}</option>
+          <option value="Show">{{ "mediaDetail.show" | translate }}</option>
+          <option value="Game">{{ "mediaDetail.game" | translate }}</option>
+          <option value="Book">{{ "mediaDetail.book" | translate }}</option>
+        </select>
       </div>
 
-      <!-- Category -->
       <div class="form-group">
-        <label for="category">Category:</label>
+        <label for="category">{{ "mediaDetail.category" | translate }}:</label>
         <input
           type="text"
           id="category"
@@ -57,9 +50,8 @@
         />
       </div>
 
-      <!-- Creator -->
       <div class="form-group">
-        <label for="creator">Creator:</label>
+        <label for="creator">{{ "mediaDetail.creator" | translate }}:</label>
         <input
           type="text"
           id="creator"
@@ -69,9 +61,10 @@
         />
       </div>
 
-      <!-- Release Date -->
       <div class="form-group">
-        <label for="releaseDate">Release Date:</label>
+        <label for="releaseDate"
+          >{{ "mediaDetail.releaseDate" | translate }}:</label
+        >
         <input
           type="date"
           id="releaseDate"
@@ -81,9 +74,8 @@
         />
       </div>
 
-      <!-- Status -->
       <div class="form-group">
-        <label for="status">Status:</label>
+        <label for="status">{{ "mediaDetail.status" | translate }}:</label>
         <input
           type="checkbox"
           id="status"
@@ -92,9 +84,10 @@
         />
       </div>
 
-      <!-- Description -->
       <div class="form-group">
-        <label for="description">Description:</label>
+        <label for="description"
+          >{{ "mediaDetail.description" | translate }}:</label
+        >
         <textarea
           id="description"
           [(ngModel)]="media.description"
@@ -102,9 +95,10 @@
         ></textarea>
       </div>
 
-      <!-- Cover Image URL -->
       <div class="form-group">
-        <label for="coverImageUrl">Cover Image URL:</label>
+        <label for="coverImageUrl"
+          >{{ "mediaDetail.coverImageUrl" | translate }}:</label
+        >
         <input
           type="text"
           id="coverImageUrl"
@@ -113,10 +107,17 @@
         />
       </div>
 
-      <!-- Buttons -->
       <div class="button-container">
-        <button type="submit" [disabled]="!mediaForm.valid" class="action-button save-button">Save Changes</button>
-        <a [routerLink]="['/media-list']" class="action-button back-link">Cancel</a>
+        <button
+          type="submit"
+          [disabled]="!mediaForm.valid"
+          class="action-button save-button"
+        >
+          {{ "buttons.saveChanges" | translate }}
+        </button>
+        <a [routerLink]="['/media-list']" class="action-button back-link">
+          {{ "buttons.cancel" | translate }}
+        </a>
       </div>
     </div>
   </form>

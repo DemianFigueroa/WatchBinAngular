@@ -1,9 +1,16 @@
 <div class="register-container">
-  <h2>Register</h2>
+  <!-- Translate Button -->
+  <div class="translate-button-container">
+    <button class="translate-button" (click)="changeLanguage()">
+      {{ currentLang === 'en' ? 'Español' : 'English' }}
+    </button>
+  </div>
+
+  <h2>{{ 'register.title' | translate }}</h2>
 
   <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
     <div class="form-group">
-      <label for="username">Username:</label>
+      <label for="username">{{ 'register.username' | translate }}:</label>
       <input
         type="text"
         id="username"
@@ -14,7 +21,7 @@
     </div>
 
     <div class="form-group">
-      <label for="email">Email:</label>
+      <label for="email">{{ 'register.email' | translate }}:</label>
       <input
         type="email"
         id="email"
@@ -25,7 +32,7 @@
     </div>
 
     <div class="form-group">
-      <label for="password">Password:</label>
+      <label for="password">{{ 'register.password' | translate }}:</label>
       <input
         type="password"
         id="password"
@@ -39,9 +46,14 @@
       {{ errorMessage }}
     </div>
 
-    <button type="submit" [disabled]="!registerForm.valid">Register</button>
+    <button type="submit" [disabled]="!registerForm.valid">
+      {{ 'register.registerButton' | translate }}
+    </button>
   </form>
+
   <div class="navigation-buttons">
-    <button (click)="goToLogin()">Go to Login</button>
+    <button (click)="goToLogin()">
+      {{ 'register.goToLogin' | translate }}
+    </button>
   </div>
 </div>

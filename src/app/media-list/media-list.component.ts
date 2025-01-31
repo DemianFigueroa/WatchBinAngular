@@ -2,21 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AuthInterceptor } from '../auth.interceptor'; // Import your interceptor
+import { authInterceptor } from '../auth.interceptor';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
-import { firstValueFrom } from 'rxjs'; // Import firstValueFrom
+import { firstValueFrom } from 'rxjs';
 import { RouterModule, Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service'; // Import CookieService
+import { CookieService } from 'ngx-cookie-service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-media-list',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule],
+  imports: [FormsModule, CommonModule, RouterModule, TranslateModule],
   providers: [
     HttpClient,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
+      useExisting: authInterceptor,
       multi: true,
     },
   ],
@@ -25,66 +26,89 @@ import { CookieService } from 'ngx-cookie-service'; // Import CookieService
 })
 export class MediaListComponent implements OnInit {
   mediaList: any[] = [];
+  filteredMediaList: any[] = [];
   errorMessage: string = '';
   defaultCoverImage = '/default-cover.jpg';
-  constructor(private apiService: ApiService, private http: HttpClient, private router: Router, private cookieService: CookieService) {}
+  searchTerm: string = '';
+  filterCriteria: string = 'all';
+  currentLang: string = 'es';
+
+  constructor(
+    private apiService: ApiService,
+    private http: HttpClient,
+    private router: Router,
+    private cookieService: CookieService,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit() {
     this.fetchMedia();
   }
 
   fetchMedia() {
-    // Initialize mediaList with default images
     this.apiService.getAllMedia().subscribe(
       (response) => {
         this.mediaList = response.map((media) => ({
           ...media,
-          coverImageUrl: this.defaultCoverImage, // Set default image initially
+          coverImageUrl: this.defaultCoverImage,
         }));
 
-        // Replace default images with actual images after fetching
         this.mediaList.forEach((media) => {
           if (media.coverImage) {
             const img = new Image();
             img.src = media.coverImage;
             img.onload = () => {
-              media.coverImageUrl = media.coverImage; // Replace with actual image once loaded
+              media.coverImageUrl = media.coverImage;
             };
             img.onerror = () => {
-              media.coverImageUrl = this.defaultCoverImage; // Fallback to default if actual image fails to load
+              media.coverImageUrl = this.defaultCoverImage;
             };
           }
         });
+
+        this.filteredMediaList = this.mediaList;
       },
       (error) => {
         console.error('Error fetching media:', error);
         this.errorMessage = error.error?.message || 'Failed to load media.';
+        this.cookieService.delete('jwtToken');
+        this.router.navigate(['/login']);
       }
     );
   }
 
   onImageError(event: any) {
-    // If image fails to load, replace it with the default image
     event.target.src = this.defaultCoverImage;
   }
-  deleteAccount(): void {
-    if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
-      this.apiService.deleteAccount().subscribe(
-        (response) => {
-          console.log('Account deleted successfully:', response);
-          // Redirect to login page after account deletion
-          this.router.navigate(['/login']);
-        },
-        (error) => {
-          console.error('Error deleting account:', error);
-          this.errorMessage = 'Failed to delete account. Please try again.';
-        }
-      );
-    }
+
+  onSearchChange() {
+    this.filterMedia();
   }
-  // Logout method
-  logout(): void {
-    this.cookieService.delete('jwtToken'); // Remove the token cookie
-    this.router.navigate(['/login']); // Redirect to login page
+
+  onFilterChange() {
+    this.filterMedia();
+  }
+
+  filterMedia() {
+    this.filteredMediaList = this.mediaList.filter((media) => {
+      const matchesSearch = media.name
+        .toLowerCase()
+        .includes(this.searchTerm.toLowerCase());
+
+      let matchesFilter = true;
+      if (this.filterCriteria === 'Completed') {
+        matchesFilter = media.status === true; // Filter by completed status
+      } else if (this.filterCriteria === 'Uncompleted') {
+        matchesFilter = media.status === false; // Filter by uncompleted status
+      } else if (this.filterCriteria !== 'all') {
+        matchesFilter = media.type === this.filterCriteria; // Check for Show or Movie
+      }
+      return matchesSearch && matchesFilter;
+    });
+  }
+  changeLanguage() {
+    this.currentLang = this.currentLang === 'en' ? 'es' : 'en'; // Toggle between English and Spanish
+    this.translate.use(this.currentLang);
+    localStorage.setItem('language', this.currentLang); // Save language preference
   }
 }

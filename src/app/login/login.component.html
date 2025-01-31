@@ -1,9 +1,16 @@
 <div class="login-container">
-  <h2>Login</h2>
+  <!-- Translate Button -->
+  <div class="translate-button-container">
+    <button class="translate-button" (click)="changeLanguage()">
+      {{ currentLang === 'en' ? 'Español' : 'English' }}
+    </button>
+  </div>
+
+  <h2>{{ 'login.title' | translate }}</h2>
 
   <form (ngSubmit)="onLogin()" #loginForm="ngForm">
     <div class="form-group">
-      <label for="username">Username:</label>
+      <label for="username">{{ 'login.username' | translate }}:</label>
       <input
         type="text"
         id="username"
@@ -14,7 +21,7 @@
     </div>
 
     <div class="form-group">
-      <label for="password">Password:</label>
+      <label for="password">{{ 'login.password' | translate }}:</label>
       <input
         type="password"
         id="password"
@@ -28,14 +35,18 @@
       {{ errorMessage }}
     </div>
 
-    <button type="submit" [disabled]="!loginForm.valid">Login</button>
+    <button type="submit" [disabled]="!loginForm.valid">
+      {{ 'login.loginButton' | translate }}
+    </button>
   </form>
 
   <div class="navigation-buttons">
-    <button (click)="goToRegister()">Go to Register</button>
+    <button (click)="goToRegister()">
+      {{ 'login.goToRegister' | translate }}
+    </button>
   </div>
 
   <div *ngIf="isLoggedIn" class="success-message">
-    <p>Login successful! Redirecting...</p>
+    <p>{{ 'login.successMessage' | translate }}</p>
   </div>
 </div>

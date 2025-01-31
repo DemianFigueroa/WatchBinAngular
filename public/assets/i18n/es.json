@@ -1,0 +1,85 @@
+{
+  "dropdownMenu": {
+    "logout": "Cerrar Sesión",
+    "deleteAccount": "Eliminar Cuenta",
+    "addNewMedia": "Agregar Nueva Media"
+  },
+  "mediaInfo": {
+    "type": "Tipo",
+    "Movie": "Película",
+    "Show": "Programa",
+    "Game": "Juego",
+    "Book": "Libro",
+    "category": "Categoría",
+    "creator": "Creador",
+    "releaseDate": "Fecha de lanzamiento",
+    "status": "Estado",
+    "completed": "Completado",
+    "pending": "Pendiente",
+    "description": "Descripción",
+    "noDescription": "No hay descripción disponible."
+  },
+  "buttons": {
+    "backToMediaList": "Volver a la lista de medios",
+    "editMedia": "Editar media",
+    "deleteMedia": "Eliminar media",
+    "saveChanges": "Guardar cambios",
+    "cancel": "Cancelar"
+  },
+  "mediaDetail": {
+    "editMedia": "Editar media",
+    "noImageFound": "No se encontró imagen",
+    "name": "Nombre",
+    "type": "Tipo",
+    "category": "Categoría",
+    "creator": "Creador",
+    "releaseDate": "Fecha de lanzamiento",
+    "status": "Estado",
+    "description": "Descripción",
+    "coverImageUrl": "URL de la imagen de portada",
+    "movie": "Película",
+    "show": "Programa",
+    "game": "Juego",
+    "book": "Libro"
+  },
+  "date": {
+    "months": [
+      "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+      "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ]
+  },
+  "searchFilter": {
+    "searchPlaceholder": "Buscar media...",
+    "all": "Todos",
+    "show": "Programa",
+    "movie": "Película",
+    "game": "Juego",
+    "book": "Libro",
+    "completed": "Completado",
+    "uncompleted": "No completado"
+  },  
+  "info": {
+    "title": "Sobre el Proyecto",
+    "description": "Este proyecto full-stack incluye una API segura en .NET para autenticación de usuarios (registro/inicio de sesión) mediante tokens JWT, junto con un frontend Angular desarrollado con componentes independientes. La plataforma permite crear y gestionar listas personalizables de medios (juegos, películas, series, libros) con soporte multilingüe y filtros dinámicos. Diseñado para escalabilidad, ofrece una experiencia fluida para organizar y seguir el consumo de medios en diversos formatos.",
+    "goToRegister": "Ir al proyecto",
+    "frontendRepo": "Frontend en Github",
+    "backendRepo": "Backend en Github",
+    "downloadCV": "Descargar CV"
+  },
+  "login": {
+    "title": "Iniciar Sesión",
+    "username": "Nombre de Usuario",
+    "password": "Contraseña",
+    "loginButton": "Iniciar Sesión",
+    "goToRegister": "Ir a Registrarse",
+    "successMessage": "¡Inicio de sesión exitoso! Redirigiendo..."
+  },
+  "register": {
+    "title": "Registrarse",
+    "username": "Nombre de Usuario",
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "registerButton": "Registrarse",
+    "goToLogin": "Ir a Iniciar Sesión"
+  }
+}

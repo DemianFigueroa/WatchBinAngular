@@ -2,24 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ApiService } from '../api.service';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
-import { AuthInterceptor } from '../auth.interceptor';
+import { authInterceptor } from '../auth.interceptor';
 import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { firstValueFrom } from 'rxjs';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-media-detail',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule],
+  imports: [FormsModule, CommonModule, RouterModule, TranslateModule],
   templateUrl: './media-detail.component.html',
   styleUrls: ['./media-detail.component.scss'],
   providers: [
     HttpClient,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
+      useExisting: authInterceptor,
+      multi: true, // Add the interceptor to the chain
     },
     DatePipe // Add DatePipe to the providers array
   ]
@@ -34,7 +35,8 @@ export class MediaDetailComponent implements OnInit {
     private apiService: ApiService,
     private datePipe: DatePipe, // Inject DatePipe
     private http: HttpClient, // Inject HttpClient
-    private router: Router // Inject Router
+    private router: Router, // Inject Router
+    private translate: TranslateService // Inject TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -81,7 +83,6 @@ export class MediaDetailComponent implements OnInit {
     if (confirm(`Are you sure you want to delete "${this.media?.name}"?`)) {
       this.apiService.deleteMedia(this.media.id).subscribe(
         () => {
-          alert('Media deleted successfully.');
           this.router.navigate(['/media-list']); // Navigate back to media list
         },
         (error) => {
@@ -93,7 +94,16 @@ export class MediaDetailComponent implements OnInit {
   }
   // Custom method to format the release date
   formatReleaseDate(date: string): string {
-    return this.datePipe.transform(date, 'dd MMMM yyyy') || 'Invalid date';
+    const dateObj = new Date(date);
+    const day = dateObj.getDate();
+    const monthIndex = dateObj.getMonth();
+    const year = dateObj.getFullYear();
+
+    // Get the translated month name based on the locale
+    const monthTranslationKey = `date.months.${monthIndex}`;
+    const monthName = this.translate.instant(monthTranslationKey);
+
+    return `${day} ${monthName} ${year}` || 'Invalid date';
   }
 
 }

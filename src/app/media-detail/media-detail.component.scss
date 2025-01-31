@@ -1,3 +1,6 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap');
+
 .media-detail-container {
   min-height: 92vh; // Ensure the container takes the full height of the viewport
   padding: 20px;
@@ -6,12 +9,16 @@
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Open Sans', sans-serif; // Use Open Sans for body text
 }
+
 h2 {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 20px;
   color: #333;
+  font-family: 'Poppins', sans-serif; // Use Poppins for headings
+  font-weight: 600; // Make the heading bold
 }
 
 .error-message {
@@ -19,6 +26,7 @@ h2 {
   text-align: center;
   font-size: 1.2rem;
   margin-bottom: 20px;
+  font-family: 'Open Sans', sans-serif; // Use Open Sans for error messages
 }
 
 .media-detail {
@@ -52,12 +60,14 @@ h2 {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Open Sans', sans-serif; // Use Open Sans for media info
 }
 
 .media-info p {
   font-size: 1.5rem;
   margin: 15px 0;
   color: #555;
+  line-height: 1.6; // Improve readability with increased line height
 }
 
 .media-info strong {
@@ -82,6 +92,8 @@ h2 {
   text-decoration: none;
   transition: background-color 0.3s ease, transform 0.2s ease;
   cursor: pointer;
+  font-family: 'Poppins', sans-serif; // Use Poppins for buttons
+  border: none; // Ensure buttons have no border
 
   &:hover {
     transform: translateY(-2px);
@@ -109,33 +121,62 @@ h2 {
 .delete-button {
   background-color: #dc3545;
   color: white;
-  border: none;
 
   &:hover {
     background-color: #c82333;
   }
 }
 
+// Media query for phone view (max-width: 768px)
 @media (max-width: 768px) {
+  .media-detail-container {
+    padding-top: 30px; // Reduce padding for smaller screens
+  }
+
+  h2 {
+    font-size: 2rem; // Reduce the font size for the heading
+    margin-bottom: 15px; // Reduce the margin for the heading
+  }
+
   .media-detail {
     flex-direction: column;
     align-items: center;
+    gap: 15px; // Reduce the gap between elements
   }
 
   .media-image {
-    max-width: 100%;
+    max-width: 100%; // Make the image take up the full width
+  }
+
+  .cover-image {
+    width: 100%; // Make the image take up the full width
+    height: auto; // Adjust height automatically
+    max-height: 400px; // Limit the maximum height
   }
 
   .media-info {
-    max-width: 100%;
+    max-width: 100%; // Make the info section take up the full width
+    padding: 15px; // Reduce padding for smaller screens
+  }
+
+  .media-info p {
+    font-size: 1.2rem; // Reduce the font size for paragraphs
+    margin: 10px 0; // Reduce the margin for paragraphs
   }
 
   .button-container {
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: column; // Stack buttons vertically
+    gap: 10px; // Reduce the gap between buttons
+    margin-top: 15px; // Reduce the margin for the button container
   }
 
   .action-button {
-    width: 100%;
+    font-size: 0.9rem; // Reduce the font size for buttons
+    padding: 10px; // Reduce padding for buttons
+  }
+
+  .error-message {
+    font-size: 1rem; // Reduce the font size for error messages
+    padding: 8px; // Adjust padding for error messages
   }
 }

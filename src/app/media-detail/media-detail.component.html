@@ -16,18 +16,17 @@
     </div>
 
     <div class="media-info">
-      <p><strong>Type:</strong> {{ media.type }}</p>
-      <p><strong>Category:</strong> {{ media.category }}</p>
-      <p><strong>Creator:</strong> {{ media.creator }}</p>
-      <p><strong>Release Date:</strong> {{ formatReleaseDate(media.releaseDate) }}</p>
-      <p><strong>Status:</strong> {{ media.status ? 'Completed' : 'Pending' }}</p>
-      <p><strong>Description:</strong> {{ media.description || 'No description available.' }}</p>
+      <p><strong>{{ 'mediaInfo.type' | translate }}:</strong> {{ 'mediaInfo.' + media.type | translate }}</p>
+      <p><strong>{{ 'mediaInfo.category' | translate }}:</strong> {{ media.category }}</p>
+      <p><strong>{{ 'mediaInfo.creator' | translate }}:</strong> {{ media.creator }}</p>
+      <p><strong>{{ 'mediaInfo.releaseDate' | translate }}:</strong> {{ formatReleaseDate(media.releaseDate) }}</p>
+      <p><strong>{{ 'mediaInfo.status' | translate }}:</strong> {{ media.status ? ('mediaInfo.completed' | translate) : ('mediaInfo.pending' | translate) }}</p>
+      <p><strong>{{ 'mediaInfo.description' | translate }}:</strong> {{ media.description || ('mediaInfo.noDescription' | translate) }}</p>
     </div>
-  </div>
-
-  <div class="button-container">
-    <a [routerLink]="['/media-list']" class="action-button back-link">Back to Media List</a>
-    <a [routerLink]="['/add-media']" [queryParams]="{ id: media.id }" class="action-button back-link">Edit Media</a>
-    <button (click)="confirmDelete()" class="action-button back-link">Delete Media</button>
-  </div>
+    
+    <div class="button-container">
+      <a [routerLink]="['/media-list']" class="action-button back-link">{{ 'buttons.backToMediaList' | translate }}</a>
+      <a [routerLink]="['/add-media']" [queryParams]="{ id: media.id }" class="action-button back-link">{{ 'buttons.editMedia' | translate }}</a>
+      <button (click)="confirmDelete()" class="action-button back-link">{{ 'buttons.deleteMedia' | translate }}</button>
+    </div>
 </div>
