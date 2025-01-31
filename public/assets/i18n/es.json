@@ -40,12 +40,34 @@
     "movie": "Película",
     "show": "Programa",
     "game": "Juego",
-    "book": "Libro"
+    "book": "Libro",
+    "deleteMediaConfirmation": "¿Estás seguro de que deseas eliminar \"{{name}}\"?",
+    "deleteMedia": "Eliminar Medio"
+  },
+  "errors": {
+    "deleteMedia": "Error al eliminar el medio.",
+    "passwordInvalid": "La contraseña no es válida.",
+    "passwordLength": "La contraseña debe tener al menos 12 caracteres.",
+    "passwordDigit": "La contraseña debe contener al menos un número.",
+    "passwordLowercase": "La contraseña debe contener al menos una letra minúscula.",
+    "passwordUppercase": "La contraseña debe contener al menos una letra mayúscula.",
+    "passwordSpecialChar": "La contraseña debe contener al menos un carácter especial.",
+    "deleteAccount": "Error al eliminar la cuenta. Por favor, inténtalo de nuevo."
   },
   "date": {
     "months": [
-      "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-      "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre"
     ]
   },
   "searchFilter": {
@@ -57,7 +79,7 @@
     "book": "Libro",
     "completed": "Completado",
     "uncompleted": "No completado"
-  },  
+  },
   "info": {
     "title": "Sobre el Proyecto",
     "description": "Este proyecto full-stack incluye una API segura en .NET para autenticación de usuarios (registro/inicio de sesión) mediante tokens JWT, junto con un frontend Angular desarrollado con componentes independientes. La plataforma permite crear y gestionar listas personalizables de medios (juegos, películas, series, libros) con soporte multilingüe y filtros dinámicos. Diseñado para escalabilidad, ofrece una experiencia fluida para organizar y seguir el consumo de medios en diversos formatos.",
@@ -81,5 +103,8 @@
     "password": "Contraseña",
     "registerButton": "Registrarse",
     "goToLogin": "Ir a Iniciar Sesión"
+  },
+  "account": {
+    "deleteConfirmation": "¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer."
   }
 }

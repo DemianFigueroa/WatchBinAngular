@@ -14,37 +14,32 @@ export class InfoComponent {
   currentLang: string = 'es';
 
   constructor(private router: Router, private translate: TranslateService) {
-    // Set initial language from localStorage or default to English
     this.currentLang = localStorage.getItem('language') || 'en';
     this.translate.use(this.currentLang);
   }
 
-  // Change language
   changeLanguage() {
-    this.currentLang = this.currentLang === 'en' ? 'es' : 'en'; // Toggle between English and Spanish
+    this.currentLang = this.currentLang === 'en' ? 'es' : 'en';
     this.translate.use(this.currentLang);
-    localStorage.setItem('language', this.currentLang); // Save language preference
+    localStorage.setItem('language', this.currentLang);
     console.log(`Language changed to ${this.currentLang}`);
   }
 
-  // Navigate to the register page
   goToRegister() {
     this.router.navigate(['/register']);
   }
 
-  // Open GitHub links in a new tab
   openGithubFrontend() {
-    window.open('https://github.com/your-username/frontend-repo', '_blank');
+    window.open('https://github.com/DemianFigueroa/WatchBinAngular', '_blank');
   }
 
   openGithubBackend() {
-    window.open('https://github.com/your-username/backend-repo', '_blank');
+    window.open('https://github.com/DemianFigueroa/WatchBin', '_blank');
   }
-  // Download CV
   downloadCV() {
     const link = document.createElement('a');
-    link.href = 'assets/cv.pdf'; // Path to your CV file in the assets folder
-    link.download = 'Demian-Figueroa.pdf'; // Name of the downloaded file
+    link.href = 'assets/cv.pdf';
+    link.download = 'Demian-Figueroa.pdf';
     link.click();
   }
 }

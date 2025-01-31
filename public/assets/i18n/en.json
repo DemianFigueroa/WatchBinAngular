@@ -40,7 +40,19 @@
     "movie": "Movie",
     "show": "Show",
     "game": "Game",
-    "book": "Book"
+    "book": "Book",
+    "deleteMediaConfirmation": "Are you sure you want to delete \"{{name}}\"?",
+    "deleteMedia": "Delete Media"
+  },
+  "errors": {
+    "deleteMedia": "Failed to delete media.",
+    "passwordInvalid": "Password is invalid.",
+    "passwordLength": "Password must be at least 12 characters long.",
+    "passwordDigit": "Password must contain at least one digit.",
+    "passwordLowercase": "Password must contain at least one lowercase letter.",
+    "passwordUppercase": "Password must contain at least one uppercase letter.",
+    "passwordSpecialChar": "Password must contain at least one special character.",
+    "deleteAccount": "Failed to delete account. Please try again."
   },
   "date": {
     "months": [
@@ -81,5 +93,8 @@
     "password": "Password",
     "registerButton": "Register",
     "goToLogin": "Go to Login"
+  },
+  "account": {
+    "deleteConfirmation": "Are you sure you want to delete your account? This action cannot be undone."
   }
 }

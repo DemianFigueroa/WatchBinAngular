@@ -1,5 +1,4 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap");
 
 .media-detail-container {
   display: flex;
@@ -12,7 +11,7 @@
   border-radius: 8px;
   padding-top: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: 'Open Sans', sans-serif; // Use Open Sans for body text
+  font-family: "Open Sans", sans-serif;
 }
 
 h2 {
@@ -20,8 +19,8 @@ h2 {
   font-size: 2.5rem;
   margin-bottom: 20px;
   color: #333;
-  font-family: 'Poppins', sans-serif; // Use Poppins for headings
-  font-weight: 600; // Make the heading bold
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
 }
 
 .error-message {
@@ -29,7 +28,7 @@ h2 {
   text-align: center;
   font-size: 1.2rem;
   margin-bottom: 20px;
-  font-family: 'Open Sans', sans-serif; // Use Open Sans for error messages
+  font-family: "Open Sans", sans-serif;
 }
 
 .success-message {
@@ -37,14 +36,14 @@ h2 {
   text-align: center;
   font-size: 1.2rem;
   margin-bottom: 20px;
-  font-family: 'Open Sans', sans-serif; // Use Open Sans for success messages
+  font-family: "Open Sans", sans-serif;
 }
 
 .media-detail {
   display: flex;
   gap: 30px;
   flex-wrap: wrap;
-  justify-content: flex-start; /* Align items to the start */
+  justify-content: flex-start;
   margin-bottom: 20px;
   margin-left: 25px;
 }
@@ -72,7 +71,7 @@ h2 {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: 'Open Sans', sans-serif; // Use Open Sans for media info
+  font-family: "Open Sans", sans-serif;
 }
 
 .form-group {
@@ -84,7 +83,7 @@ h2 {
   font-size: 1.2rem;
   color: #333;
   margin-bottom: 5px;
-  font-family: 'Poppins', sans-serif; // Use Poppins for labels
+  font-family: "Poppins", sans-serif;
 }
 
 .form-group input[type="text"],
@@ -96,7 +95,7 @@ h2 {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif; // Use Open Sans for inputs
+  font-family: "Open Sans", sans-serif;
 }
 
 .form-group textarea {
@@ -118,15 +117,15 @@ h2 {
   border-radius: 5px;
   box-sizing: border-box;
   background-color: white;
-  appearance: none; /* Remove default dropdown arrow */
-  -webkit-appearance: none; /* Remove default dropdown arrow for Safari */
-  -moz-appearance: none; /* Remove default dropdown arrow for Firefox */
-  font-family: 'Open Sans', sans-serif; // Use Open Sans for dropdowns
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-family: "Open Sans", sans-serif;
 }
 
 .form-group select:focus {
   outline: none;
-  border-color: #6200ee; /* Customize focus border color */
+  border-color: #6200ee;
 }
 
 .form-group select option {
@@ -135,7 +134,7 @@ h2 {
 
 .button-container {
   display: flex;
-  justify-content: flex-start; /* Align buttons to the start */
+  justify-content: flex-start;
   gap: 15px;
   margin-top: 20px;
 }
@@ -150,8 +149,8 @@ h2 {
   text-decoration: none;
   transition: background-color 0.3s ease, transform 0.2s ease;
   cursor: pointer;
-  font-family: 'Poppins', sans-serif; // Use Poppins for buttons
-  border: none; // Ensure buttons have no border
+  font-family: "Poppins", sans-serif;
+  border: none;
 
   &:hover {
     transform: translateY(-2px);
@@ -167,10 +166,10 @@ h2 {
   }
 
   &:disabled {
-    background-color: #cccccc; // Gray background for disabled state
-    color: #666666; // Darker gray text for better contrast
-    cursor: not-allowed; // Change cursor to indicate the button is disabled
-    transform: none; // Disable the hover transform effect
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    transform: none;
   }
 }
 
@@ -183,68 +182,67 @@ h2 {
   }
 }
 
-// Media query for phone view (max-width: 768px)
 @media (max-width: 768px) {
   .media-detail-container {
-    padding-top: 30px; // Reduce padding for smaller screens
+    padding-top: 30px;
   }
 
   h2 {
-    font-size: 2rem; // Reduce the font size for the heading
-    margin-bottom: 15px; // Reduce the margin for the heading
+    font-size: 2rem;
+    margin-bottom: 15px;
   }
 
   .media-detail {
     flex-direction: column;
     align-items: center;
-    gap: 15px; // Reduce the gap between elements
-    margin-left: 0; // Remove the left margin
+    gap: 15px;
+    margin-left: 0;
   }
 
   .media-image {
-    max-width: 100%; // Make the image take up the full width
+    max-width: 100%;
   }
 
   .cover-image {
-    width: 100%; // Make the image take up the full width
-    height: auto; // Adjust height automatically
-    max-height: 400px; // Limit the maximum height
+    width: 100%;
+    height: auto;
+    max-height: 400px;
   }
 
   .media-info {
-    max-width: 100%; // Make the info section take up the full width
-    padding: 15px; // Reduce padding for smaller screens
+    max-width: 100%;
+    padding: 15px;
   }
 
   .form-group label {
-    font-size: 1rem; // Reduce the font size for labels
+    font-size: 1rem;
   }
 
   .form-group input[type="text"],
   .form-group input[type="date"],
   .form-group textarea {
-    font-size: 0.9rem; // Reduce the font size for inputs
-    padding: 8px; // Reduce padding for inputs
+    font-size: 0.9rem;
+    padding: 8px;
   }
 
   .form-group textarea {
-    height: 80px; // Reduce the height of textareas
+    height: 80px;
   }
 
   .button-container {
-    flex-direction: column; // Stack buttons vertically
-    gap: 10px; // Reduce the gap between buttons
-    margin-top: 15px; // Reduce the margin for the button container
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
   }
 
   .action-button {
-    font-size: 0.9rem; // Reduce the font size for buttons
-    padding: 10px; // Reduce padding for buttons
+    font-size: 0.9rem;
+    padding: 10px;
   }
 
   .error-message,
   .success-message {
-    font-size: 1rem; // Reduce the font size for messages
-    padding: 8px; // Adjust padding for messages
+    font-size: 1rem;
+    padding: 8px;
   }
 }

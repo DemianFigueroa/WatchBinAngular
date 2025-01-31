@@ -1,5 +1,4 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap");
 
 .login-container {
   max-width: 400px;
@@ -9,14 +8,14 @@
   border-radius: 8px;
   background-color: #f9f9f9;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  font-family: 'Open Sans', sans-serif; // Use Open Sans for body text
+  font-family: "Open Sans", sans-serif;
 
   h2 {
     text-align: center;
     margin-bottom: 20px;
     color: #333;
-    font-family: 'Poppins', sans-serif; // Use Poppins for headings
-    font-weight: 600; // Make the heading bold
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
   }
 
   .form-group {
@@ -27,7 +26,7 @@
       margin-bottom: 5px;
       font-weight: bold;
       color: #555;
-      font-family: 'Poppins', sans-serif; // Use Poppins for labels
+      font-family: "Poppins", sans-serif;
     }
 
     input {
@@ -36,12 +35,12 @@
       border: 1px solid #ccc;
       border-radius: 4px;
       font-size: 14px;
-      font-family: 'Open Sans', sans-serif; // Use Open Sans for inputs
-      transition: border-color 0.3s ease; // Add transition for focus effect
+      font-family: "Open Sans", sans-serif;
+      transition: border-color 0.3s ease;
 
       &:focus {
-        border-color: #007bff; // Highlight input on focus
-        outline: none; // Remove default outline
+        border-color: #007bff;
+        outline: none;
       }
     }
   }
@@ -55,18 +54,18 @@
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
-    font-family: 'Poppins', sans-serif; // Use Poppins for buttons
-    transition: background-color 0.3s ease, transform 0.2s ease; // Add transition for hover effect
+    font-family: "Poppins", sans-serif;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 
     &:hover {
       background-color: #0056b3;
-      transform: translateY(-2px); // Add subtle hover effect
+      transform: translateY(-2px);
     }
 
     &:disabled {
       background-color: #ccc;
       cursor: not-allowed;
-      transform: none; // Disable hover effect for disabled buttons
+      transform: none;
     }
   }
 
@@ -80,12 +79,12 @@
       border: none;
       font-size: 14px;
       cursor: pointer;
-      font-family: 'Poppins', sans-serif; // Use Poppins for navigation buttons
-      transition: color 0.3s ease; // Add transition for hover effect
+      font-family: "Poppins", sans-serif;
+      transition: color 0.3s ease;
 
       &:hover {
         text-decoration: underline;
-        color: #0056b3; // Darken color on hover
+        color: #0056b3;
       }
     }
   }
@@ -94,62 +93,61 @@
     color: #dc3545;
     margin-bottom: 15px;
     text-align: center;
-    font-family: 'Open Sans', sans-serif; // Use Open Sans for error messages
+    font-family: "Open Sans", sans-serif;
   }
 
   .success-message {
     color: #28a745;
     margin-top: 15px;
     text-align: center;
-    font-family: 'Open Sans', sans-serif; // Use Open Sans for success messages
+    font-family: "Open Sans", sans-serif;
   }
 }
 
-// Media query for phone view (max-width: 768px)
 @media (max-width: 768px) {
   .login-container {
-    max-width: 90%; // Reduce the max-width for smaller screens
-    margin: 20px auto; // Reduce the top and bottom margin
-    padding: 15px; // Reduce padding for smaller screens
+    max-width: 90%;
+    margin: 20px auto;
+    padding: 15px;
 
     h2 {
-      font-size: 1.5rem; // Reduce the font size for the heading
-      margin-bottom: 15px; // Reduce the margin for the heading
+      font-size: 1.5rem;
+      margin-bottom: 15px;
     }
 
     .form-group {
-      margin-bottom: 10px; // Reduce the margin between form groups
+      margin-bottom: 10px;
 
       label {
-        font-size: 0.9rem; // Reduce the font size for labels
+        font-size: 0.9rem;
       }
 
       input {
-        width: 95.5%; // Make inputs take up the full width
-        padding: 6px; // Reduce padding for inputs
-        font-size: 0.9rem; // Reduce the font size for inputs
+        width: 95.5%;
+        padding: 6px;
+        font-size: 0.9rem;
       }
     }
 
     button {
-      padding: 8px; // Reduce padding for buttons
-      font-size: 0.9rem; // Reduce the font size for buttons
+      padding: 8px;
+      font-size: 0.9rem;
     }
 
     .navigation-buttons {
-      margin-top: 10px; // Reduce the margin for navigation buttons
+      margin-top: 10px;
 
       button {
-        font-size: 0.9rem; // Reduce the font size for navigation buttons
+        font-size: 0.9rem;
       }
     }
 
     .error-message {
-      font-size: 0.9rem; // Reduce the font size for error messages
+      font-size: 0.9rem;
     }
 
     .success-message {
-      font-size: 0.9rem; // Reduce the font size for success messages
+      font-size: 0.9rem;
     }
   }
 }

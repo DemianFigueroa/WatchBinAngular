@@ -3,9 +3,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ApiService } from '../api.service';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { authInterceptor } from '../auth.interceptor';
-import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
-import { firstValueFrom } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
@@ -20,9 +18,9 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
     {
       provide: HTTP_INTERCEPTORS,
       useExisting: authInterceptor,
-      multi: true, // Add the interceptor to the chain
+      multi: true,
     },
-    DatePipe // Add DatePipe to the providers array
+    DatePipe
   ]
 })
 export class MediaDetailComponent implements OnInit {
@@ -33,15 +31,15 @@ export class MediaDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiService,
-    private datePipe: DatePipe, // Inject DatePipe
-    private http: HttpClient, // Inject HttpClient
-    private router: Router, // Inject Router
-    private translate: TranslateService // Inject TranslateService
+    private datePipe: DatePipe,
+    private http: HttpClient,
+    private router: Router,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      const mediaId = params['id']; // Get the media id from the URL
+      const mediaId = params['id'];
       this.fetchMediaDetails(mediaId);
     });
   }
@@ -49,21 +47,18 @@ export class MediaDetailComponent implements OnInit {
   fetchMediaDetails(id: string): void {
     this.apiService.getMediaById(id).subscribe(
       (response) => {
-        // Initialize with the default image
         this.media = {
           ...response,
-          coverImageUrl: this.defaultCoverImage, // Set default image initially
+          coverImageUrl: this.defaultCoverImage,
         };
-
-        // Load the actual image in the background
         if (response.coverImage) {
           const img = new Image();
           img.src = response.coverImage;
           img.onload = () => {
-            this.media.coverImageUrl = response.coverImage; // Replace with actual image once loaded
+            this.media.coverImageUrl = response.coverImage;
           };
           img.onerror = () => {
-            this.media.coverImageUrl = this.defaultCoverImage; // Fallback to default if actual image fails to load
+            this.media.coverImageUrl = this.defaultCoverImage;
           };
         }
       },
@@ -75,34 +70,33 @@ export class MediaDetailComponent implements OnInit {
   }
 
   onImageError(event: any) {
-    // If image fails to load, replace it with the default image
     event.target.src = this.defaultCoverImage;
   }
 
   confirmDelete(): void {
-    if (confirm(`Are you sure you want to delete "${this.media?.name}"?`)) {
+    const confirmMessage = this.translate.instant('mediaDetail.deleteMediaConfirmation', {
+      name: this.media?.name,
+    });
+  
+    if (confirm(confirmMessage)) {
       this.apiService.deleteMedia(this.media.id).subscribe(
         () => {
-          this.router.navigate(['/media-list']); // Navigate back to media list
+          this.router.navigate(['/media-list']);
         },
         (error) => {
           console.error('Error deleting media:', error);
-          this.errorMessage = error.error?.message || 'Failed to delete media.';
+          this.errorMessage = this.translate.instant('errors.deleteMedia');
         }
       );
     }
   }
-  // Custom method to format the release date
   formatReleaseDate(date: string): string {
     const dateObj = new Date(date);
     const day = dateObj.getDate();
     const monthIndex = dateObj.getMonth();
     const year = dateObj.getFullYear();
-
-    // Get the translated month name based on the locale
     const monthTranslationKey = `date.months.${monthIndex}`;
     const monthName = this.translate.instant(monthTranslationKey);
-
     return `${day} ${monthName} ${year}` || 'Invalid date';
   }
 

@@ -23,48 +23,44 @@ export class TopBarComponent {
   isMenuOpen = false;
   currentLang: string = 'es';
   constructor(private router: Router, private apiService: ApiService, private cookieService: CookieService, private translate: TranslateService) {
-    // Set initial language from localStorage or default to English
     this.currentLang = localStorage.getItem('language') || 'en';
     this.translate.use(this.currentLang);
   }
 
-  // Navigate to the home page
   goHome() {
     this.router.navigate(['/media-list']);
   }
 
-  // Logout the user
   logout(): void {
     this.cookieService.delete('jwtToken');
     this.router.navigate(['/login']);
   }
 
   deleteAccount(): void {
-    if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+    const confirmMessage = this.translate.instant('account.deleteConfirmation');
+    if (confirm(confirmMessage)) {
       this.apiService.deleteAccount().subscribe(
         (response) => {
           console.log('Account deleted successfully:', response);
-          this.logout(); // Logout the user after deleting the account
+          this.logout();
         },
         (error) => {
           console.error('Error deleting account:', error);
-          this.errorMessage = 'Failed to delete account. Please try again.';
+          this.errorMessage = this.translate.instant('errors.deleteAccount');
         }
       );
     }
   }
 
-  // Toggle the hamburger menu
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
   changeLanguage() {
-    this.currentLang = this.currentLang === 'en' ? 'es' : 'en'; // Toggle between English and Spanish
+    this.currentLang = this.currentLang === 'en' ? 'es' : 'en';
     this.translate.use(this.currentLang);
-    localStorage.setItem('language', this.currentLang); // Save language preference
+    localStorage.setItem('language', this.currentLang);
   }
-  // Navigate to the info screen
   goToInfo() {
-    this.router.navigate(['/info']); // Replace '/info' with the actual route for your info screen
+    this.router.navigate(['/info']);
   }
 }

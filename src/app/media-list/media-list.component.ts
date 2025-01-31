@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { authInterceptor } from '../auth.interceptor';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
-import { firstValueFrom } from 'rxjs';
 import { RouterModule, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -70,7 +69,9 @@ export class MediaListComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching media:', error);
-        this.errorMessage = error.error?.message || 'Failed to load media.';
+        this.errorMessage = this.translate.instant('errors.fetchMedia', {
+          defaultMessage: error.error?.message || 'Failed to load media.',
+        });
         this.cookieService.delete('jwtToken');
         this.router.navigate(['/login']);
       }
@@ -97,18 +98,18 @@ export class MediaListComponent implements OnInit {
 
       let matchesFilter = true;
       if (this.filterCriteria === 'Completed') {
-        matchesFilter = media.status === true; // Filter by completed status
+        matchesFilter = media.status === true;
       } else if (this.filterCriteria === 'Uncompleted') {
-        matchesFilter = media.status === false; // Filter by uncompleted status
+        matchesFilter = media.status === false;
       } else if (this.filterCriteria !== 'all') {
-        matchesFilter = media.type === this.filterCriteria; // Check for Show or Movie
+        matchesFilter = media.type === this.filterCriteria;
       }
       return matchesSearch && matchesFilter;
     });
   }
   changeLanguage() {
-    this.currentLang = this.currentLang === 'en' ? 'es' : 'en'; // Toggle between English and Spanish
+    this.currentLang = this.currentLang === 'en' ? 'es' : 'en';
     this.translate.use(this.currentLang);
-    localStorage.setItem('language', this.currentLang); // Save language preference
+    localStorage.setItem('language', this.currentLang);
   }
 }

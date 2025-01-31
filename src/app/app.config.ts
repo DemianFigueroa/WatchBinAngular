@@ -1,7 +1,10 @@
 import { ApplicationConfig, isDevMode } from '@angular/core';
 import { routes } from './app-routing.module'; // Adjust the path as necessary
 import { provideRouter } from '@angular/router';
-import { provideHttpClient, withInterceptorsFromDi,} from '@angular/common/http';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { DatePipe } from '@angular/common';
@@ -9,7 +12,11 @@ import { AuthGuard } from './auth.guard';
 import { provideServiceWorker } from '@angular/service-worker';
 import { authInterceptor } from './auth.interceptor';
 import { HttpClient } from '@angular/common/http';
-import { TranslateLoader, TranslateService, TranslateStore,} from '@ngx-translate/core';
+import {
+  TranslateLoader,
+  TranslateService,
+  TranslateStore,
+} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -23,7 +30,7 @@ export const appConfig: ApplicationConfig = {
     {
       provide: HTTP_INTERCEPTORS,
       useExisting: authInterceptor,
-      multi: true, // Add the interceptor to the chain
+      multi: true,
     },
     DatePipe,
     AuthGuard,

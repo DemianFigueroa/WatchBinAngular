@@ -28,71 +28,65 @@ export class RegisterComponent {
     private translate: TranslateService
   ) {}
 
-  // Method to handle registration form submission
   onSubmit() {
-    // Password validation logic
     if (!this.validatePassword(this.password)) {
-      return; // Stop if password is invalid
+      return;
     }
 
-    // Password is valid, proceed with the API call
-    this.apiService.register(this.username, this.email, this.password).subscribe({
-      next: (response) => {
-        console.log('Registration successful:', response);
-        this.errorMessage = ''; // Clear any error messages
+    this.apiService
+      .register(this.username, this.email, this.password)
+      .subscribe({
+        next: (response) => {
+          console.log('Registration successful:', response);
+          this.errorMessage = '';
 
-        // Optionally, set a cookie or token if the API returns one
-        if (response.token) {
-          this.cookieService.set('jwtToken', response.token, { expires: 7 }); // Set token in cookies for 7 days
-        }
+          if (response.token) {
+            this.cookieService.set('jwtToken', response.token, { expires: 7 });
+          }
 
-        // Redirect to the media list page after successful registration
-        this.router.navigate(['/media-list']);
-      },
-      error: (error) => {
-        console.error('Registration error:', error);
-        this.errorMessage =
-          error.error?.message || 'An error occurred while registering.';
-      },
-    });
+          this.router.navigate(['/media-list']);
+        },
+        error: (error) => {
+          console.error('Registration error:', error);
+          this.errorMessage =
+            error.error?.message || 'An error occurred while registering.';
+        },
+      });
   }
 
-  // Method to navigate to the Login page
   goToLogin() {
     this.router.navigate(['/login']);
   }
 
-  // Password validation utility
   private validatePassword(password: string): boolean {
     const passwordRegex = {
-      digit: /\d/, // Check for at least one digit
-      lowercase: /[a-z]/, // Check for at least one lowercase letter
-      uppercase: /[A-Z]/, // Check for at least one uppercase letter
-      specialCharacter: /[\W_]/, // Check for at least one special character
+      digit: /\d/,
+      lowercase: /[a-z]/,
+      uppercase: /[A-Z]/,
+      specialCharacter: /[\W_]/,
     };
 
     if (password.length < 12) {
-      this.errorMessage = 'Password must be at least 12 characters long.';
+      this.errorMessage = this.translate.instant('errors.passwordLength');
       return false;
     } else if (!passwordRegex.digit.test(password)) {
-      this.errorMessage = 'Password must contain at least one digit.';
+      this.errorMessage = this.translate.instant('errors.passwordDigit');
       return false;
     } else if (!passwordRegex.lowercase.test(password)) {
-      this.errorMessage = 'Password must contain at least one lowercase letter.';
+      this.errorMessage = this.translate.instant('errors.passwordLowercase');
       return false;
     } else if (!passwordRegex.uppercase.test(password)) {
-      this.errorMessage = 'Password must contain at least one uppercase letter.';
+      this.errorMessage = this.translate.instant('errors.passwordUppercase');
       return false;
     } else if (!passwordRegex.specialCharacter.test(password)) {
-      this.errorMessage = 'Password must contain at least one special character.';
+      this.errorMessage = this.translate.instant('errors.passwordSpecialChar');
       return false;
     }
-
     return true;
   }
   changeLanguage() {
-    this.currentLang = this.currentLang === 'en' ? 'es' : 'en'; // Toggle between English and Spanish
+    this.currentLang = this.currentLang === 'en' ? 'es' : 'en';
     this.translate.use(this.currentLang);
-    localStorage.setItem('language', this.currentLang); // Save language preference
+    localStorage.setItem('language', this.currentLang);
   }
 }

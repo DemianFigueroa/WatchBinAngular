@@ -1,31 +1,24 @@
 <header class="top-bar">
-  <!-- Container for home icon and language button -->
   <div class="left-buttons">
-    <!-- Home Icon -->
     <button class="home-button" (click)="goHome()">
       <fa-icon [icon]="faHome"></fa-icon>
     </button>
 
-    <!-- Language Change Button -->
     <button class="language-button" (click)="changeLanguage()">
       <fa-icon [icon]="faLanguage"></fa-icon>
     </button>
-    <!-- Info Button -->
     <button class="info-button" (click)="goToInfo()">
       <fa-icon [icon]="faInfoCircle"></fa-icon>
     </button>
   </div>
-  <!-- App Name -->
   <div class="app-name">Watchbin</div>
 
-  <!-- Hamburger Menu -->
   <div class="hamburger-menu" (click)="toggleMenu()">
     <span></span>
     <span></span>
     <span></span>
   </div>
 
-  <!-- Dropdown Menu -->
   <div class="dropdown-menu" *ngIf="isMenuOpen">
     <button (click)="logout()">{{ 'dropdownMenu.logout' | translate }}</button>
     <button (click)="deleteAccount()">{{ 'dropdownMenu.deleteAccount' | translate }}</button>

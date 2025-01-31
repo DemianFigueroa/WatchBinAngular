@@ -1,31 +1,28 @@
-/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap');
 
-/* Apply fonts globally */
 body {
-  font-family: 'Open Sans', sans-serif; /* Default font for body text */
+  font-family: 'Open Sans', sans-serif;
 }
 
 .top-bar {
-  position: fixed; /* Fix the top bar to the top of the viewport */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   display: flex;
   align-items: center;
-  padding: 10px 20px; /* Adjust padding as needed */
+  padding: 10px 20px;
   background-color: #1e1e1e;
   color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Ensure it stays above other content */
-  font-family: 'Poppins', sans-serif; /* Use Poppins for the top bar */
+  z-index: 1000;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Container for home icon, language button, and info button */
 .left-buttons {
   display: flex;
   align-items: center;
-  gap: 10px; /* Add spacing between buttons */
+  gap: 10px;
 }
 
 .home-button,
@@ -34,25 +31,25 @@ body {
   background: none;
   border: none;
   color: white;
-  font-size: 1.5rem; /* Adjust the size of the icon */
+  font-size: 1.5rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0; /* Remove default button padding */
-  font-family: 'Poppins', sans-serif; /* Use Poppins for buttons */
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
 
   &:hover {
-    opacity: 0.8; /* Add hover effect */
+    opacity: 0.8;
   }
 }
 
 .app-name {
   font-size: 1.5rem;
   font-weight: bold;
-  flex: 1; /* Take up remaining space */
-  text-align: center; /* Center the title */
-  font-family: 'Poppins', sans-serif; /* Use Poppins for the app name */
+  flex: 1;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
 
 .hamburger-menu {
@@ -75,8 +72,8 @@ body {
   border: 1px solid #ddd;
   border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000; // Ensure it appears above other content
-  font-family: 'Open Sans', sans-serif; /* Use Open Sans for dropdown text */
+  z-index: 1000;
+  font-family: 'Open Sans', sans-serif;
 
   button {
     display: block;
@@ -87,7 +84,7 @@ body {
     border: none;
     color: #333;
     cursor: pointer;
-    font-family: 'Open Sans', sans-serif; /* Use Open Sans for dropdown buttons */
+    font-family: 'Open Sans', sans-serif;
 
     &:hover {
       background-color: #f0f0f0;

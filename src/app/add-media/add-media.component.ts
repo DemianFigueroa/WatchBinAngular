@@ -19,9 +19,9 @@ import { TranslateModule } from '@ngx-translate/core';
     {
       provide: HTTP_INTERCEPTORS,
       useExisting: authInterceptor,
-      multi: true, // Add the interceptor to the chain
+      multi: true,
     },
-    DatePipe, // Add DatePipe to the providers array
+    DatePipe,
   ],
 })
 export class AddMediaComponent implements OnInit {
@@ -34,13 +34,13 @@ export class AddMediaComponent implements OnInit {
     description: '',
     category: '',
     status: false,
-    coverImage: '', // Ensure this matches the property name in your template
+    coverImage: '',
   };
   errorMessage: string = '';
   successMessage: string = '';
   isEditing = false;
   mediaId: string | null = null;
-  defaultCoverImage = '/assets/default-cover.jpg'; // Update the path to your default image
+  defaultCoverImage = '/assets/default-cover.jpg';
 
   constructor(
     private apiService: ApiService,
@@ -64,13 +64,12 @@ export class AddMediaComponent implements OnInit {
   fetchMediaDetails(id: string): void {
     this.apiService.getMediaById(id).subscribe(
       (data) => {
-        // Directly assign the API response to the media object
         this.media = {
           ...data,
           releaseDate: new Date(data.releaseDate).toISOString().split('T')[0],
-          coverImage: data.coverImage, // Ensure this matches the property name in your template
+          coverImage: data.coverImage,
         };
-        this.cdr.detectChanges(); // Force change detection
+        this.cdr.detectChanges();
       },
       (error) => {
         this.errorMessage = 'Error loading media data.';
@@ -98,10 +97,8 @@ export class AddMediaComponent implements OnInit {
       }
     );
   }
-
-  // Handle image loading errors
   onImageError(event: Event): void {
     const imgElement = event.target as HTMLImageElement;
-    imgElement.src = this.defaultCoverImage; // Set the default image on error
+    imgElement.src = this.defaultCoverImage;
   }
 }

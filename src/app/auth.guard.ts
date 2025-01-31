@@ -12,12 +12,9 @@ export class AuthGuard implements CanActivate {
     const token = this.cookieService.get('jwtToken');
 
     if (token) {
-      // If a token is present, redirect to the media-list page
       this.router.navigate(['/media-list']);
-      return false; // Prevent access to the route
+      return false;
     }
-
-    // If no token, allow access to the route
     return true;
   }
 }
