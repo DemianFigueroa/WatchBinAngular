@@ -20,6 +20,7 @@ export class RegisterComponent {
   id: string = '';
   errorMessage: string = '';
   currentLang: string = 'es';
+  isLoading: boolean = false;
 
   constructor(
     private apiService: ApiService,
@@ -32,7 +33,7 @@ export class RegisterComponent {
     if (!this.validatePassword(this.password)) {
       return;
     }
-
+    this.isLoading = true;
     this.apiService
       .register(this.username, this.email, this.password)
       .subscribe({

@@ -94,7 +94,8 @@
     "password": "Contraseña",
     "loginButton": "Iniciar Sesión",
     "goToRegister": "Ir a Registrarse",
-    "successMessage": "¡Inicio de sesión exitoso! Redirigiendo..."
+    "successMessage": "¡Inicio de sesión exitoso! Redirigiendo...",
+    "loadingMessage": "Por favor espera, iniciando sesión..."
   },
   "register": {
     "title": "Registrarse",

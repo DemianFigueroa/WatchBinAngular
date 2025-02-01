@@ -18,6 +18,7 @@ export class LoginComponent {
   password: string = '';
   errorMessage: string = '';
   isLoggedIn: boolean = false;
+  isLoading: boolean = false;
   currentLang: string = 'es';
 
   constructor(
@@ -31,6 +32,7 @@ export class LoginComponent {
     if (!this.validatePassword(this.password)) {
       return;
     }
+    this.isLoading = true;
     this.apiService.login(this.username, this.password).subscribe({
       next: (response) => {
         console.log('Login successful:', response);

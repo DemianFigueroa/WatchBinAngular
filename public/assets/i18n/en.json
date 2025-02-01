@@ -84,7 +84,8 @@
     "password": "Password",
     "loginButton": "Login",
     "goToRegister": "Go to Register",
-    "successMessage": "Login successful! Redirecting..."
+    "successMessage": "Login successful! Redirecting...",
+    "loadingMessage": "Please wait, logging in..."
   },
   "register": {
     "title": "Register",
@@ -97,4 +98,5 @@
   "account": {
     "deleteConfirmation": "Are you sure you want to delete your account? This action cannot be undone."
   }
+  
 }

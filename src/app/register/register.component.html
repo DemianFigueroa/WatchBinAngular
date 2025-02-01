@@ -48,6 +48,9 @@
     <button type="submit" [disabled]="!registerForm.valid">
       {{ "register.registerButton" | translate }}
     </button>
+    <div *ngIf="isLoading" class="loading-message">
+      {{ "login.loadingMessage" | translate }}
+    </div>
   </form>
 
   <div class="navigation-buttons">
