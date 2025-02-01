@@ -36,6 +36,7 @@ export class LoginComponent {
     this.apiService.login(this.username, this.password).subscribe({
       next: (response) => {
         console.log('Login successful:', response);
+        this.isLoading = false;
         this.isLoggedIn = true;
         this.cookieService.set('jwtToken', response.token, { expires: 7 });
         this.errorMessage = '';

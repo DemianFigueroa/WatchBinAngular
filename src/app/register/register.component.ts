@@ -39,6 +39,7 @@ export class RegisterComponent {
       .subscribe({
         next: (response) => {
           console.log('Registration successful:', response);
+          this.isLoading = false;
           this.errorMessage = '';
 
           if (response.token) {
